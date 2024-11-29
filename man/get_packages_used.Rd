@@ -4,7 +4,7 @@
 \alias{get_packages_used}
 \title{Get information on packaged used}
 \usage{
-get_packages_used(..., detail = TRUE)
+get_packages_used(..., version_installed = FALSE, dependencies = TRUE)
 }
 \arguments{
 \item{...}{Additional arguments passed to internal functions.}
