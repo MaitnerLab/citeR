@@ -4,23 +4,24 @@
 \alias{get_packages_used}
 \title{Get information on packaged used}
 \usage{
-get_packages_used(..., version_installed = FALSE, dependencies = TRUE)
+get_packages_used(..., version_installed = FALSE, dependencies = FALSE)
 }
 \arguments{
-\item{...}{Additional arguments passed to internal functions.}
+\item{...}{R files and/or folders containing R files. If left blank, will default to the current working directory.}
+
+\item{version_installed}{Logical. If TRUE, will return version information for installed packages.}
+
+\item{dependencies}{Logical. If TRUE, will additionally return information on the dependencies used by each R file.}
 }
 \value{
-Dataframe containing bibtex-formatted citation information
+Dataframe containing information on which packages are used by which R files.
 }
 \description{
 Returns information needed to cite the GVS
 }
-\note{
-This function provides citation information in bibtex format that can be used with reference manager software (e.g. Paperpile, Zotero). Please do remember to cite both the sources and the NSR, as the NSR couldn't exist without these sources!
-}
 \examples{
 {
-citation_info <- GVS_citations()
+packages_used <- get_packages_used()
 }
 
 }

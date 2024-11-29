@@ -1,16 +1,19 @@
 #'Get information on packaged used
 #'
 #'Returns information needed to cite the GVS
-#' @param ... Additional arguments passed to internal functions.
-#' @return Dataframe containing bibtex-formatted citation information
-#' @note This function provides citation information in bibtex format that can be used with reference manager software (e.g. Paperpile, Zotero). Please do remember to cite both the sources and the NSR, as the NSR couldn't exist without these sources!
+#' @param ... R files and/or folders containing R files. If left blank, will default to the current working directory.
+#' @param version_installed Logical. If TRUE, will return version information for installed packages.
+#' @param dependencies Logical. If TRUE, will additionally return information on the dependencies used by each R file.
+#' @return Dataframe containing information on which packages are used by which R files.
 #' @importFrom stringr str_match_all str_match
 #' @export
 #' @examples {
-#' citation_info <- GVS_citations()
+#' packages_used <- get_packages_used()
 #' }
 #'
-get_packages_used <- function(..., version_installed = FALSE, dependencies = TRUE) {
+get_packages_used <- function(...,
+                              version_installed = FALSE,
+                              dependencies = FALSE) {
 
   #package up the input
 
@@ -106,22 +109,21 @@ get_packages_used <- function(..., version_installed = FALSE, dependencies = TRU
 
 
   # Optionally get version numbers
-  if(version_installed){message("Brian write code")}
+  if(version_installed){
 
-  # if(!detail)
-  #   libs <- list
+  libs$version <-
+    sapply(X = libs$package,
+           FUN = function(x){
+
+             if(is.na(x)){NA}else{
+               packageVersion(x)|> as.character()}
+
+           }) |>
+    unlist() |>
+    unname()
+
+  }
+
   return(libs)
 }
-
-####################################
-
-#devtools::load_all()
-#get_packages_used()
-# x <- dir(pattern="\\.R", ignore.case = TRUE,recursive = TRUE)
-#
-# get_packages_used("R/",detail = TRUE)
-# get_packages_used("R/",detail = FALSE)
-#
-# library(devtools)
-#
 
