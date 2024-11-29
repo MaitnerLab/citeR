@@ -1,0 +1,11 @@
+Package: citeR
+Title: Aids In Proper Attribution Of R Packages Used.
+Version: 0.0.0.9000
+Authors@R: 
+    person("Brian", "Maitner", , "bmaitner@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "https://orcid.org/0000-0002-2118-9880"))
+Description: This package is designed to help R users figure out what they should be citing when publishing work using R code.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
