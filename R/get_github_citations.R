@@ -2,7 +2,8 @@
 github_repos <- "https://github.com/Plant-Functional-Trait-Course/pftc7_south_africa"
 
 get_github_citations <- function(github_repos,
-                                 verbose = TRUE){
+                                 verbose = TRUE,
+                                 bibtex_file = NULL){
 
   # make temp folder
   dir_to_delete <- tempdir()
@@ -32,7 +33,15 @@ get_github_citations <- function(github_repos,
 
   # write the citations
 
+    stop("Write code")
 
+  # delete the temporary folder
+
+    unlink(dir_to_delete,recursive = TRUE,force = TRUE)
+
+  # return the data.frame
+
+    return(packages_used_citations)
 
 
 
