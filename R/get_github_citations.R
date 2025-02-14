@@ -28,6 +28,11 @@ get_github_citations <- function(github_repos,
 
   # get the citations
 
+    packages_used_citations <- suppressWarnings(get_package_citations(packages_used_dataframe = packages_used))
+
+  # write the citations
+
+
 
 
 

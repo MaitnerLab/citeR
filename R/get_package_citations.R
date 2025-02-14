@@ -4,10 +4,11 @@
 #' @param packages_used_dataframe Output returned by `get_packages_used`
 #' @param dependencies Logical. If TRUE, will additionally return information on the dependencies used by each R file.
 #' @return Dataframe containing information on which packages are used by which R files.
-#' @importFrom stringr str_match_all str_match
+#' @importFrom devtools install_version
+#' @import tidyverse
 #' @export
 #' @examples {
-#' packages_used <- get_packages_used()
+#' packages_used_cites <- get_package_citations()
 #' }
 #'
 get_package_citations <- function(packages_used_dataframe){
@@ -15,7 +16,7 @@ get_package_citations <- function(packages_used_dataframe){
 
   # get list of unique packages
 
-    unique_packs <- data.frame(package =unique(packages_used_dataframe$package),
+    unique_packs <- data.frame(package = unique(packages_used_dataframe$package),
                             citation = NA)
 
     unique_packs <- unique_packs[which(!is.na(unique_packs$package)),]
@@ -82,4 +83,9 @@ get_package_citations <- function(packages_used_dataframe){
 
 
 
+    packages_used_dataframe %>%
+      left_join(unique_packs,
+                by = "package") -> packages_used_dataframe
+
+    return(packages_used_dataframe)
 }
