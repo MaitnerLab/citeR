@@ -1,5 +1,4 @@
 
-github_repos <- "https://github.com/Plant-Functional-Trait-Course/pftc7_south_africa"
 
 get_github_citations <- function(github_repos,
                                  verbose = TRUE,
@@ -31,9 +30,23 @@ get_github_citations <- function(github_repos,
 
     packages_used_citations <- suppressWarnings(get_package_citations(packages_used_dataframe = packages_used))
 
-  # write the citations
+  # write the citations if a file was specified
 
-    stop("Write code")
+    if(!is.null(bibtex_file )){
+
+      packages_used_citations %>%
+        select(citation) %>%
+        unique()%>%
+        na.omit()%>%
+        pull(citation)->test
+
+      class(test)
+
+
+      writeLines(text = test,
+                 con=bibtex_file)
+
+    }
 
   # delete the temporary folder
 
