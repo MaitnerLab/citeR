@@ -7,6 +7,7 @@
 #' @param bibtex_file. NULL or character. An optional file to which citations are written as a .bib file.
 #' @return Dataframe containing information on which packages are used by which R files.
 #' @importFrom stringr str_match_all str_match
+#' @importFrom dplyr select pull
 #' @export
 #' @examples {
 #' packages_used <- get_github_citations(github_repos = "https://github.com/Plant-Functional-Trait-Course/PFTC6_Norway",
@@ -48,13 +49,13 @@ get_github_citations <- function(github_repos,
 
     if(!is.null(bibtex_file )){
 
-      packages_used_citations %>%
-        select(citation) %>%
-        unique()%>%
-        na.omit()%>%
+      packages_used_citations |>
+        select(citation) |>
+        unique() |>
+        na.omit() |>
         pull(citation)->test
 
-      class(test)
+      #class(test)
 
 
       writeLines(text = test,

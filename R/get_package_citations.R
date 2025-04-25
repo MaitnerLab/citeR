@@ -5,7 +5,7 @@
 #' @param dependencies Logical. If TRUE, will additionally return information on the dependencies used by each R file.
 #' @return Dataframe containing information on which packages are used by which R files.
 #' @importFrom devtools install_version
-#' @import tidyverse
+#' @importFrom dplyr left_join
 #' @export
 #' @examples {
 #' packages_used_cites <- get_package_citations()
@@ -83,7 +83,7 @@ get_package_citations <- function(packages_used_dataframe){
 
 
 
-    packages_used_dataframe %>%
+    packages_used_dataframe |>
       left_join(unique_packs,
                 by = "package") -> packages_used_dataframe
 
