@@ -1,5 +1,19 @@
 
-
+#'Get information on packaged used by code on Github
+#'
+#'Returns information needed to cite the GVS
+#' @param github_repos character. A single repository or a vector of repositories.
+#' @param verbose Logical. Default is TRUE. If TRUE displays messages on status.
+#' @param bibtex_file. NULL or character. An optional file to which citations are written as a .bib file.
+#' @return Dataframe containing information on which packages are used by which R files.
+#' @importFrom stringr str_match_all str_match
+#' @export
+#' @examples {
+#' packages_used <- get_github_citations(github_repos = "https://github.com/Plant-Functional-Trait-Course/PFTC6_Norway",
+#'                                       verbose = TRUE,
+#'                                       bibtex_file = NULL)
+#' }
+#'
 get_github_citations <- function(github_repos,
                                  verbose = TRUE,
                                  bibtex_file = NULL){

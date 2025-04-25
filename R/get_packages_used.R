@@ -1,6 +1,6 @@
 #'Get information on packaged used
 #'
-#'Returns information needed to cite the GVS
+#'Returns information needed for citation
 #' @param ... R files and/or folders containing R files. If left blank, will default to the current working directory.
 #' @param version_installed Logical. If TRUE, will return version information for installed packages.
 #' @param dependencies Logical. If TRUE, will additionally return information on the dependencies used by each R file.

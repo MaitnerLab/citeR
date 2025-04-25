@@ -17,7 +17,7 @@ get_packages_used(..., version_installed = FALSE, dependencies = FALSE)
 Dataframe containing information on which packages are used by which R files.
 }
 \description{
-Returns information needed to cite the GVS
+Returns information needed for citation
 }
 \examples{
 {
